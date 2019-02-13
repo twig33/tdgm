@@ -6,6 +6,9 @@
 
 int SCREEN_HEIGHT = 480;
 int SCREEN_WIDTH = 640;
+
+const int LEVEL_WIDTH = 1280;
+const int LEVEL_HEIGHT = 960;
 GraphicsManager* Graphics;
 
 void GraphicsManager::setColor(int color){

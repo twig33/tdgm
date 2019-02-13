@@ -5,10 +5,14 @@
 #include "SDL.h"
 #include <physics.h>
 #include <managers.h>
+#include <stack>
+#include <gamestate.h>
+
 
 EntityManager entityMg;
 InputManager inputMg;
 GraphicsManager graphicsMg;
+
 
 bool updateEvts(){
 	static SDL_Event e;

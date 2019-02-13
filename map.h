@@ -11,6 +11,13 @@
 class Map
 {
 	public:
+	
+	Map();
+	~Map();
+	
+	void LoadMap();
+	void DrawMap();
+	
 	unsigned int width;
 	unsigned int height;
 	
@@ -20,7 +27,6 @@ class Map
 	
 	void load(const std::string& filename, unsigned int height);
 	
-	void draw(SDL_Renderer& window, float dt);
 }
 
 

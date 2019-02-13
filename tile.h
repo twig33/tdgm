@@ -9,17 +9,19 @@ class Tile
 
 	public:
 
-	TileType tileType;
+//	TileType tileType;
 
-	Tile(){}
+	Tile();
 			
-	Tile(const unsigned int tileSize, 	Texture txt)
+	Tile(int x, int y, int tileType); //я немного запутался насчет того что я хочу сделать с тилетипом ну лан
 
-	 void draw(SDL_Renderer& window, float dt);
+	void render(SDL_Rect& camera);
+	
+	int getType
 
-
-
-
+	private:
+	//тип тайла
+	int mType;
 }
 
 #endif
