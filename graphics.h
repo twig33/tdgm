@@ -6,7 +6,7 @@
 #include <string>
 
 enum {rectangleRender, spriteRender};
-enum {playerTex, enemyTex, projectileTex, reticleTex, ALWAYS_LAST};
+enum {playerTex, enemyTex, projectileTex, reticleTex, buttonDefaultTex, buttonClickTex, buttonHoverTex, ALWAYS_LAST};
 typedef std::pair<SDL_Texture*, SDL_Rect*> Texture;
 
 
@@ -33,7 +33,7 @@ class GraphicsManager{
 		SDL_Renderer* ourRenderer;
 		SDL_Window* window;
 		std::vector<SDL_Texture*> textures;
-		std::vector<std::string> textureFnames = {"player.png", "enemy.png", "projectile.png", "reticle.png"};
+		std::vector<std::string> textureFnames = {"player.png", "enemy.png", "projectile.png", "reticle.png", "buttonDefaultTex.png", "buttonClickTex.png", "buttonHoverTex.png"};
 		SDL_Texture* loadFromPath(std::string path);
 };
 #endif

@@ -15,6 +15,9 @@ class Collision{
 };
 class CollisionManager{
 	public:
-		void update();
+		entity* colliding(SDL_Rect* rect, unsigned int coltype);
+		bool pointIn(SDL_Rect rect, int x, int y);
+	private:
+		rectColliding(SDL_Rect* one, SDL_Rect* two);
 };
 #endif
