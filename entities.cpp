@@ -136,7 +136,7 @@ void Projectile::update(){
 		this->y += speedY*2*globalSpeed;
 		hitbox.x = (int)(this->x);
 		hitbox.y = (int)(this->y);
-		entity* challenger = colliding(&hitbox, collideType);
+		entity* challenger = Collision->colliding(&hitbox, collideType);
 		if (challenger != NULL && challenger->type == enemy){
 			((Enemy*)challenger)->hp -= 10;
 			delete this; //https://www.youtube.com/watch?v=N5TWbeav7hI

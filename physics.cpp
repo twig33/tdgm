@@ -1,6 +1,9 @@
 #include <SDL.h>
 #include <managers.h>
-
+CollisionManager* Collision;
+CollisionManager::CollisionManager(){
+	Collision = this;
+}
 bool CollisionManager::rectColliding(SDL_Rect* one, SDL_Rect* two){
 	int ox1 = one->x;
 	int ox2 = one->x + one->w;
@@ -14,7 +17,7 @@ bool CollisionManager::rectColliding(SDL_Rect* one, SDL_Rect* two){
 	return (ox1 < tx2 && ox2 > tx1 && oy1 < ty2 && oy2 > ty1);
 }
 
-bool CollisionManager::pointIn(SDL_Rect rect, int x, int y){
+bool CollisionManager::pointIn(int x, int y, SDL_Rect rect){
 	return (x < rect.x && x > rect.x + rect.w && y < rect.y && y > rect.y + rect.h);
 }
 

@@ -1,8 +1,8 @@
-#include <ui.h>
 #include <managers.h>
 
 bool flagHover = false;
 bool flagClick = false;
+UIManager* UI;
 UIManager::UIManager(){
 	UI = this;
 }
@@ -21,15 +21,17 @@ void UIManager::updateUI(){
 }
 
 UIMessage UIManager::dispatchMessage(){
-	return messageQueue.pop_front();
+	UIMessage temp = messageQueue.front();
+	messageQueue.pop();
+	return temp;
 }
 
 void UIManager::pushMessage(UIMessage msg){
-	messageQueue.push_back(msg);
+	messageQueue.push(msg);
 }
 
-void UIManager::createElement(UIElement element){
-	UIElements.push_back(element);
+void UIManager::createElement(UIElement* element){
+	UIElements.push_back(*element);
 }
 
 void UIManager::handleMessage(UIMessage msg){
@@ -42,30 +44,37 @@ void UIManager::handleMessage(UIMessage msg){
 	}
 }
 
-Button::Button(int x, int y, int w, int h, std::string text){
+Button::Button(int x, int y, int w, int h, std::string textt, int idd){
 	dimensions.x = x;
 	dimensions.y = y;
 	dimensions.w = w;
 	dimensions.h = h;
-	this->text = text;
+	currTexture.second = &dimensions;
+	text = textt;
+	id = idd;
+	type = button;
+}
+
+void Button::renderMe(){
+	Graphics->render(&currTexture, spriteRender);
 }
 
 void Button::update(){
 	if (!flagHover && Collision->pointIn(Input->getInput()->mx, Input->getInput()->my, dimensions)){
 		flagHover = true;
-		currTexture->first = hoverTexture;
+		currTexture.first = textureHover;
 	}
 	if (flagHover && !(Collision->pointIn(Input->getInput()->mx, Input->getInput()->my, dimensions))){
 		flagHover = false;
-		currTexture->first = defaultTexture;
+		currTexture.first = textureDefault;
 	}
 	if (flagHover && flagClick && Input->getInput()->m1){
 		flagClick = false;
-		currTexture->first = clickTexture;
+		currTexture.first = textureClick;
 	}
 	if (!flagClick && !(Input->getInput()->m1)){
 		flagClick = true;
-		currTexture->first = defaultTexture;
+		currTexture.first = textureDefault;
 		UIMessage msg;
 		msg.type = buttonClick;
 		msg.id = this->id;

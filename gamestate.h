@@ -2,6 +2,7 @@
 #define GAMESTATE_INCLUDED
 
 #include <SDL.h>
+#include <stack>
 enum GameStates
 {
     STATE_NULL,
@@ -20,6 +21,15 @@ class GameState
     virtual void logic() = 0;
     virtual void render() = 0;
     virtual ~GameState(){};
+};
+
+class GameStateManager
+{
+	public:
+		int currentId;
+		
+	private:
+		std::stack<GameState*> gamestateStack;
 };
 
 class Intro : public GameState

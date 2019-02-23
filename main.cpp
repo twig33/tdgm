@@ -12,7 +12,7 @@
 EntityManager entityMg;
 InputManager inputMg;
 GraphicsManager graphicsMg;
-
+UIManager uiMg;
 
 bool updateEvts(){
 	static SDL_Event e;
@@ -33,6 +33,7 @@ int main(int argc, char* argv[]){
 	Graphics->setColor((white << 4) + cyan);
 	bool quit = 0;
 	Entities->getEntities().push_back(new Player);
+	UI->createElement(new Button(20,20,100,100, "Spawn Enemy", 23137));
 		while (!quit){
 			unsigned int before = SDL_GetTicks();
 		

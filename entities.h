@@ -5,6 +5,7 @@
 #include <input.h>
 #include <vector>
 #include <iostream>
+
 enum {player, enemy, projectile, tex};
 const int playerIndex = 0;
 //const int reticleIndex = 1;

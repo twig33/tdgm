@@ -2,7 +2,7 @@
 #define PHYSICS_INCLUDED
 
 #include <SDL.h>
-#include <managers.h>
+#include <entities.h>
 
 bool rectColliding(SDL_Rect* one, SDL_Rect* two);
 entity* colliding(SDL_Rect* rect, unsigned int coltype);
@@ -15,9 +15,10 @@ class Collision{
 };
 class CollisionManager{
 	public:
+		CollisionManager();
 		entity* colliding(SDL_Rect* rect, unsigned int coltype);
-		bool pointIn(SDL_Rect rect, int x, int y);
+		bool pointIn(int x, int y, SDL_Rect rect);
 	private:
-		rectColliding(SDL_Rect* one, SDL_Rect* two);
+		bool rectColliding(SDL_Rect* one, SDL_Rect* two);
 };
 #endif

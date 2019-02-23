@@ -4,6 +4,7 @@
 #include <graphics.h>
 #include <gamestate.h>
 #include <entities.h>
+#include <physics.h>
 #include <input.h>
 #include <ui.h>
 
